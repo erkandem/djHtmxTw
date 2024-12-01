@@ -6,16 +6,18 @@ compile_local:
 	uv pip compile ./requirements/local.in -o ./requirements/local.txt
 
 install_base:
+	pip install uv
 	uv pip install -r ./requirements/base.txt
 
 install_local:
+	pip install uv
 	uv pip install -r ./requirements/local.txt
 
 
 create_superuser:
 	@export DJANGO_SUPERUSER_USERNAME=admin && \
 	export DJANGO_SUPERUSER_EMAIL=admin@example.com && \
-	export DJANGO_SUPERUSER_PASSWORD=adminpass && \
+	export DJANGO_SUPERUSER_PASSWORD=admin && \
 	python manage.py createsuperuser --noinput
 
 run:

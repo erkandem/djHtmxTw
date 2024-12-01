@@ -4,6 +4,7 @@ asgiref==3.8.1
     # via
     #   -r ./requirements/base.txt
     #   django
+    #   django-browser-reload
 asttokens==3.0.0
     # via
     #   -r ./requirements/base.txt
@@ -15,14 +16,14 @@ decorator==5.1.1
 django==5.1.2
     # via
     #   -r ./requirements/base.txt
+    #   django-browser-reload
     #   django-extensions
+django-browser-reload==1.17.0
+    # via -r ./requirements/local.in
 django-extensions==3.2.3
     # via -r ./requirements/base.txt
 exceptiongroup==1.2.2
-    # via
-    #   -r ./requirements/base.txt
-    #   ipython
-    #   pytest
+    # via -r ./requirements/base.txt
 executing==2.1.0
     # via
     #   -r ./requirements/base.txt
@@ -81,8 +82,6 @@ stack-data==0.6.3
     # via
     #   -r ./requirements/base.txt
     #   ipython
-tomli==2.2.1
-    # via pytest
 traitlets==5.14.3
     # via
     #   -r ./requirements/base.txt
@@ -91,7 +90,6 @@ traitlets==5.14.3
 typing-extensions==4.12.2
     # via
     #   -r ./requirements/base.txt
-    #   asgiref
     #   ipython
 wcwidth==0.2.13
     # via

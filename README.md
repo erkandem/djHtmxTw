@@ -219,3 +219,56 @@ $ tree  -A ./party
 ```
 
  - https://htmx.org/docs/#installing
+
+### C5 - Tailwind
+
+```shell
+
+touch .nvmrc
+echo v22.11.0 > .nvmrc
+
+nvm install
+nvm use
+
+node -v
+v22.11.0
+
+npm -v
+10.9.0
+
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+customizing tailwind via `[tailwind.config.js](tailwind.config.js)`
+ - adding a font
+ - adding colors
+
+
+reusing styles:
+ - group reused statements https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply
+
+mobile first
+ - breakpoints : https://tailwindcss.com/docs/responsive-design
+
+| Breakpoint prefix | Minimum width | CSS                                |
+|-------------------|---------------|------------------------------------|
+| sm                | 640px         | @media (min-width: 640px) { ... }  |
+| md                | 768px         | @media (min-width: 768px) { ... }  |
+| lg                | 1024px        | @media (min-width: 1024px) { ... } |
+| xl                | 1280px        | @media (min-width: 1280px) { ... } |
+| 2xl               | 1536px        | @media (min-width: 1536px) { ... } |
+
+watching files
+
+```shell
+npm tailwind:dev
+```
+
+building for prod files
+
+```shell
+npm tailwind:build
+```
+
+reload page on html template changes `django_browser_reload`
