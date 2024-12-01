@@ -9,6 +9,10 @@ asttokens==3.0.0
     # via
     #   -r ./requirements/base.txt
     #   stack-data
+black==24.10.0
+    # via -r ./requirements/local.in
+click==8.1.7
+    # via black
 decorator==5.1.1
     # via
     #   -r ./requirements/base.txt
@@ -32,6 +36,8 @@ iniconfig==2.0.0
     # via pytest
 ipython==8.30.0
     # via -r ./requirements/base.txt
+isort==5.13.2
+    # via -r ./requirements/local.in
 jedi==0.19.2
     # via
     #   -r ./requirements/base.txt
@@ -40,16 +46,24 @@ matplotlib-inline==0.1.7
     # via
     #   -r ./requirements/base.txt
     #   ipython
+mypy-extensions==1.0.0
+    # via black
 packaging==24.2
-    # via pytest
+    # via
+    #   black
+    #   pytest
 parso==0.8.4
     # via
     #   -r ./requirements/base.txt
     #   jedi
+pathspec==0.12.1
+    # via black
 pexpect==4.9.0
     # via
     #   -r ./requirements/base.txt
     #   ipython
+platformdirs==4.3.6
+    # via black
 pluggy==1.5.0
     # via pytest
 prompt-toolkit==3.0.48
@@ -73,6 +87,8 @@ pytest==8.3.4
     #   -r ./requirements/local.in
     #   pytest-django
 pytest-django==4.9.0
+    # via -r ./requirements/local.in
+ruff==0.8.1
     # via -r ./requirements/local.in
 sqlparse==0.5.2
     # via

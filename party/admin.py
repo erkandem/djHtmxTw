@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 
-from .models import CustomUser, Party, Gift, Guest
+from .models import CustomUser, Gift, Guest, Party
 
 
 class CustomUserChangeForm(UserChangeForm):

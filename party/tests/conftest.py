@@ -3,7 +3,7 @@ import datetime
 import pytest
 from django.test import Client
 
-from party.models import Party, Gift, Guest
+from party.models import Gift, Guest, Party
 
 
 @pytest.fixture(scope="function")
@@ -58,9 +58,3 @@ def create_guest():
         )
 
     return _create_guest
-
-
-import datetime
-
-import pytest
-from django.urls import reverse

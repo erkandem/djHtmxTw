@@ -293,3 +293,52 @@ added similar to htmx in minified form
  - CBV usage recap: https://testdriven.io/blog/django-class-based-vs-function-based-views/
  - TDD
 
+### C8 - Party List
+
+running the project currently:
+
+```shell
+# with activated virtual env
+python manage.py runserver
+
+# with right node version
+npm run tailwind:dev
+```
+
+ - [conftest.py](party/tests/conftest.py) to include fixtures as factories
+   https://docs.pytest.org/en/7.4.x/how-to/fixtures.html#factories-as-fixtures
+ - test to check for right queryset 
+ - add listing view and template
+   - `empty` template tag in case iterable has no items
+     https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#for-empty
+ - :warning: fails without login, bc non-admin login page doesn't exist
+
+#### Design
+ :warning: AI-Generated
+
+### 1. Layout & Structure
+- **Grid-based:** Uses `grid` and `grid-cols-2` for symmetry.
+- **Centered content:** `container mx-auto` ensures proper alignment.
+
+##### 2. Spacing
+- Consistent use of `p-*`, `m-*`, and `gap-*` classes for balanced layouts.
+
+##### 3. Borders & Shadows
+- Custom borders (`border-custom-red`, `border-custom-blue`) and `shadow-lg` for emphasis and depth.
+
+##### 4. Color Scheme
+- Custom colors (`custom-red`, `custom-blue`) for branding.
+- Neutral backgrounds (`bg-white`, `bg-sky-200`) for contrast.
+
+##### 5. Typography
+- Clear hierarchy with `font-bold`, `text-2xl`, and `uppercase`.
+
+##### 6. Interactivity
+- Hover effects (`hover:text-custom-blue-light`) for links.
+
+##### 7. Accessibility
+- Semantic roles (`role="alert"`) and clear structure for screen readers.
+
+##### Custom Classes
+- `<tw-directive>-<custom-color>`
+- `border-custom-red`

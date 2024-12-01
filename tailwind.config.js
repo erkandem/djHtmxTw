@@ -7,7 +7,7 @@ module.exports = {
         './party/static/party/src/**/*.css',
         // includes tailwind usage in e.g.
         // return HttpResponse("<div class='bg-rose-900'>Error!</div>")
-        '../../**/*.py'
+        './**/*.py'
     ],
     theme: {
         fontFamily: {

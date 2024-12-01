@@ -4,4 +4,8 @@ pytest
 pytest-django
 django-browser-reload
 
+ruff
+black
+isort
+
 

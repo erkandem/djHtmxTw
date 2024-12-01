@@ -42,3 +42,19 @@ load_fixtures:
 	python manage.py loaddata initial_parties.json
 	python manage.py loaddata initial_gifts.json
 	python manage.py loaddata initial_guests.json
+
+test:
+	python -m pytest -v
+
+black:
+	black .
+
+ruff:
+	ruff check
+
+isort:
+	isort .
+
+lint: black isort ruff
+
+precommit: lint test
