@@ -316,7 +316,7 @@ npm run tailwind:dev
 #### Design
  :warning: AI-Generated
 
-### 1. Layout & Structure
+##### 1. Layout & Structure
 - **Grid-based:** Uses `grid` and `grid-cols-2` for symmetry.
 - **Centered content:** `container mx-auto` ensures proper alignment.
 
@@ -342,3 +342,44 @@ npm run tailwind:dev
 ##### Custom Classes
 - `<tw-directive>-<custom-color>`
 - `border-custom-red`
+
+### C9 - Party Detail
+ 
+ - `PartyDetailPage`
+   - container template `page_party_detail.html`
+   - which includes `partial_party_detail.html` rendering the actual party
+   - which includes a `edit` button to load the form
+ - `PartyDetailPartial`
+   - targe of edit button `[1]` - `GET` returns the form  
+   - clicked edit button returns template with save button `[2]`
+   - successful save  via `PUT` returns the party `[2]`
+   - CSRF token is added to the header 
+
+`[1]`
+```html
+<div id="party-detail">
+    <!-- rendered party details --> 
+    <button class="btn-default mr-0 ml-auto block"
+            hx-get="{% url 'partial_party_detail' party.uuid %}"
+            hx-target="#party-detail"
+    >
+        Edit
+    </button>
+</div>
+```
+
+`[2]`
+```html
+<div id="party-form">
+    <!-- Response will be rendered into the -->
+    <form hx-put="{% url 'partial_party_detail' party.uuid %}" 
+          hx-target="#party-form"
+          hx-swap="outerHTML"
+    >
+    <!-- form fields -->
+        <div class="w-full text-center">
+            <button type="submit" class="btn-default">Save</button>
+        </div>
+    </form>
+</div>
+```

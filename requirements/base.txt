@@ -4,16 +4,22 @@ asgiref==3.8.1
     # via django
 asttokens==3.0.0
     # via stack-data
+crispy-bootstrap4==2024.10
+    # via -r ./requirements/base.in
 decorator==5.1.1
     # via ipython
 django==5.1.2
     # via
     #   -r ./requirements/base.in
+    #   crispy-bootstrap4
+    #   django-crispy-forms
     #   django-extensions
+django-crispy-forms==2.3
+    # via
+    #   -r ./requirements/base.in
+    #   crispy-bootstrap4
 django-extensions==3.2.3
     # via -r ./requirements/base.in
-exceptiongroup==1.2.2
-    # via ipython
 executing==2.1.0
     # via stack-data
 ipython==8.30.0
@@ -43,8 +49,6 @@ traitlets==5.14.3
     #   ipython
     #   matplotlib-inline
 typing-extensions==4.12.2
-    # via
-    #   asgiref
-    #   ipython
+    # via ipython
 wcwidth==0.2.13
     # via prompt-toolkit

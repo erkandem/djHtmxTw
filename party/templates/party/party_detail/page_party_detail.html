@@ -1,0 +1,15 @@
+{% extends 'party/base.html' %}
+
+{% block content %}
+    <div class="max-w-6xl mx-auto">
+        <section id="party-invitation" class="drop-shadow-lg my-10 p-6 bg-white rounded-lg ">
+            {% include 'party/party_detail/partial_party_detail.html' %}
+        </section>
+
+        <a href="{% url 'page_party_list' %}"
+        class="bg-custom-blue w-[40px] h-[40px] flex justify-center items-center text-custom-powder-light rounded-full hover:bg-custom-blue-light"
+        >
+            &#8249;
+        </a>
+    </div>
+{% endblock %}

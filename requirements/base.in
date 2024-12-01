@@ -1,4 +1,6 @@
 Django==5.1.2
+django-crispy-forms==2.3
+crispy-bootstrap4==2024.10
 
 django-extensions
 ipython

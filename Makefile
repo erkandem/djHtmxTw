@@ -5,6 +5,8 @@ compile_base:
 compile_local:
 	uv pip compile ./requirements/local.in -o ./requirements/local.txt
 
+compile_reqs: compile_base compile_local
+
 install_base:
 	pip install uv
 	uv pip install -r ./requirements/base.txt

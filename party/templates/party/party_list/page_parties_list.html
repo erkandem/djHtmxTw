@@ -9,7 +9,7 @@
                     {{ party.invitation|truncatewords:30 }}
                 </div>
                 <div class="mt-4">
-                    <a href="" class="text-custom-blue hover:text-custom-blue-light mr-4">Party details</a>
+                    <a href="{% url 'page_single_party' party.uuid %}" class="text-custom-blue hover:text-custom-blue-light mr-4">Party details</a> <!-- URL ADDED -->
                     <a href="" class="text-custom-blue hover:text-custom-blue-light mr-4">Gift registry</a>
                     <a href="" class="text-custom-blue hover:text-custom-blue-light">Guest List </a>
                 </div>
