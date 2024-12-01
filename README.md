@@ -145,7 +145,7 @@ Ref:
 Ref:
  - https://alpinejs.dev/
 
-### Outline
+#### Outline
 
  -  Part 1 - setup
    - setup django, how to integrate htmx, tailwind, alpine
@@ -176,6 +176,21 @@ Ref:
    - Docker & Compose
    - Heroku
 
-### Extra
+#### Extra
 
 check `examples/c1`
+
+### C2 - Django Setup
+
+ - Start the project after creating a virtualenv
+
+```shell
+pip install uv
+make compile_local
+make install_local
+django-admin startproject core .
+django-admin startapp party
+```
+
+ - create a custom user and connect it to the admin
+
