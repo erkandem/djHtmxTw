@@ -194,3 +194,6 @@ django-admin startapp party
 
  - create a custom user and connect it to the admin
 
+ - create new models
+ - download fixtures
+ - install fixtures

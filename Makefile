@@ -21,5 +21,22 @@ create_superuser:
 run:
 	python manage.py runserver
 
+makemigrations:
+	python manage.py makemigrations
+
+migrate:
+	python manage.py migrate
+
 shell_plus:
 	python manage.py shell_plus
+
+download_fixtures:
+	mkdir -p "party/fixtures"
+	wget -P ./party/fixtures --no-clobber https://raw.githubusercontent.com/testdrivenio/django-party/refs/heads/main/party/fixtures/initial_gifts.json
+	wget -P ./party/fixtures --no-clobber https://raw.githubusercontent.com/testdrivenio/django-party/refs/heads/main/party/fixtures/initial_guests.json
+	wget -P ./party/fixtures --no-clobber https://raw.githubusercontent.com/testdrivenio/django-party/refs/heads/main/party/fixtures/initial_parties.json
+
+load_fixtures:
+	python manage.py loaddata initial_parties.json
+	python manage.py loaddata initial_gifts.json
+	python manage.py loaddata initial_guests.json
