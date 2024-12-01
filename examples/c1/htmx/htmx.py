@@ -8,6 +8,7 @@ Run with:
  - index.html served by default, so no GET route
 
 """
+
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 
