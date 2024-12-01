@@ -22,10 +22,13 @@ exceptiongroup==1.2.2
     # via
     #   -r ./requirements/base.txt
     #   ipython
+    #   pytest
 executing==2.1.0
     # via
     #   -r ./requirements/base.txt
     #   stack-data
+iniconfig==2.0.0
+    # via pytest
 ipython==8.30.0
     # via -r ./requirements/base.txt
 jedi==0.19.2
@@ -36,6 +39,8 @@ matplotlib-inline==0.1.7
     # via
     #   -r ./requirements/base.txt
     #   ipython
+packaging==24.2
+    # via pytest
 parso==0.8.4
     # via
     #   -r ./requirements/base.txt
@@ -44,6 +49,8 @@ pexpect==4.9.0
     # via
     #   -r ./requirements/base.txt
     #   ipython
+pluggy==1.5.0
+    # via pytest
 prompt-toolkit==3.0.48
     # via
     #   -r ./requirements/base.txt
@@ -60,6 +67,12 @@ pygments==2.18.0
     # via
     #   -r ./requirements/base.txt
     #   ipython
+pytest==8.3.4
+    # via
+    #   -r ./requirements/local.in
+    #   pytest-django
+pytest-django==4.9.0
+    # via -r ./requirements/local.in
 sqlparse==0.5.2
     # via
     #   -r ./requirements/base.txt
@@ -68,6 +81,8 @@ stack-data==0.6.3
     # via
     #   -r ./requirements/base.txt
     #   ipython
+tomli==2.2.1
+    # via pytest
 traitlets==5.14.3
     # via
     #   -r ./requirements/base.txt

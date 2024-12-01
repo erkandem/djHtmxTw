@@ -197,3 +197,4 @@ django-admin startapp party
  - create new models
  - download fixtures
  - install fixtures
+ - add pytest
