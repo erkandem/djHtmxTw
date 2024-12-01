@@ -272,3 +272,7 @@ npm tailwind:build
 ```
 
 reload page on html template changes `django_browser_reload`
+
+### C6 - Alpine
+
+added similar to htmx in minified form
