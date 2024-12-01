@@ -11,6 +11,10 @@ class PartyListPage(LoginRequiredMixin, ListView):
     context_object_name = "parties"
 
     def get_queryset(self):
+        """
+        use the following to get the empty state rendered
+        return Party.objects.none()
+        """
         return Party.objects.filter(
             organizer=self.request.user,
             party_date__gte=datetime.date.today(),
