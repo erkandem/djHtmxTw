@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpine.js Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+</head>
+<body>
+  <div x-data="{ count: 0 }">
+    <span x-text="count"></span>
+    <button x-on:click="count++">Increment</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMX Example</title>
+  <!-- Include HTMX from a CDN -->
+  <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body>
+  <div id="parent-div">
+    <button hx-post="/clicked"
+            hx-trigger="click"
+            hx-target="#parent-div"
+            hx-swap="outerHTML">
+      Click Me!
+    </button>
+  </div>
+</body>
+</html>
