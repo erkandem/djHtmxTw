@@ -1,6 +1,6 @@
 # Full-stack Django with HTMX and Tailwind
 
-## Part 1
+## Part 1 - Setup
 
 ### C1 - Intro
 
@@ -276,3 +276,20 @@ reload page on html template changes `django_browser_reload`
 ### C6 - Alpine
 
 added similar to htmx in minified form
+
+## Part 2 - Building
+
+### C7 - Intro
+
+ - cases inspired by https://htmx.org/examples/ but with focus on Django
+ - alpine at end of P2 
+ - a lot of `partial` view will be added to deliver
+   the html responses for HTMX
+ - split views to 
+   - main django view
+   - and partials
+ - split urls to group by view?
+ - tests will reflect views package
+ - CBV usage recap: https://testdriven.io/blog/django-class-based-vs-function-based-views/
+ - TDD
+
