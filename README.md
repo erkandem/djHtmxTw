@@ -180,7 +180,7 @@ Ref:
 
 check `examples/c1`
 
-### C2 - Django Setup
+### C3 - Django Setup
 
  - Start the project after creating a virtualenv
 
@@ -198,3 +198,24 @@ django-admin startapp party
  - download fixtures
  - install fixtures
  - add pytest
+
+### C4 - HTMX Setup
+
+ - add to static files instead of cdn
+
+```shell
+static/party/js
+$ tree  -A ./party
+├── static
+│   └── party
+│       └── js
+│           └── htmx.min.js
+```
+
+```html
+{% load static %}
+<!-- ... -->
+<script type="text/javascript" src="{% static '/party/js/htmx.min.js' %}"></script> 
+```
+
+ - https://htmx.org/docs/#installing
