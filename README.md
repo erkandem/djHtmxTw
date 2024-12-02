@@ -383,3 +383,138 @@ npm run tailwind:dev
     </form>
 </div>
 ```
+
+### C10 - Inline Validation - and create party view
+
+Target is to create a form to 
+ - create a new `Party`
+ - and add inline validation for 
+   - `invitation`
+   - `party_date`
+
+The HTML attributes to activate HTMX are set in  the form.
+via the `attrs` argument in the field definition of the `widgets` attribute.
+
+#### new "create" route
+
+ - functional view `page_new_party` for simplicity
+ - return create form on `GET`
+ - redirect to detail view `page_single_party` on success
+ - else render errors
+ - no HTMX since redirect is used
+ - `{% csrf_token %}` needs to be in the template
+   since ti was only declared for HTMX as header
+
+
+#### the setup for inline validation
+
+The key benefit is to give feedback before submitting the form.
+Sth we love react for?
+
+```python
+widgets = {
+    "party_date": forms.DateInput(
+        attrs={
+            "type": "date",
+            "hx-get": reverse_lazy("partial_check_party_date"),
+            "hx-trigger": "blur",
+            "hx-swap": "outerHTML",
+            "hx-target": "#div_id_party_date",
+        }
+    ),
+}
+```
+
+ - `type`: controlling the default widget of browser
+ - `hx-get`: the URL of the `partial_check_party_date` **running** the validation
+ - `hx-trigger`: blur - meaning on focus out (i.e. after editing)
+ - `hx-swap`: `outerHTML` - Replace the entire target element with the response
+ - `hx-target`: `#div_id_party_date` matches ID which django generically will create
+    for the `party_date` field
+
+![systematic naming of form fields](docs/images/c10_inline_validation_form_field_id.png)
+
+#### the route to validation
+ 
+upon focus in and imitate focus out, HTMX triggers a get to the URL of `partial_check_party_date` 
+in the shape of:
+
+```javascript
+await fetch("http://localhost:8000/party/new/check-date/?party_date=", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0",
+        "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.5",
+        "HX-Request": "true",
+        "HX-Trigger": "id_party_date",
+        "HX-Trigger-Name": "party_date",
+        "HX-Target": "div_id_party_date",
+        "HX-Current-URL": "http://localhost:8000/party/new/",
+        "X-CSRFToken": "hpYZwbV1dC70l36954D4BVvGV1tys6zWbQ9CWyn68c7th0XnD2QKY2ZsApPnG42F",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin"
+    },
+    "referrer": "http://localhost:8000/party/new/",
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+The view passes the query parameter to the form.
+`party_date` is known to the form `PartyForm`.
+
+```python
+@login_required
+def partial_check_party_date(request):
+    form = PartyForm(request.GET)
+    return HttpResponse(as_crispy_field(form["party_date"]))
+```
+
+The interesting part is that the form is not validated in its 
+entirety but only in the single field `party_date`.
+
+`as_crispy_field` renders single fields.
+Below is the result. Note:
+ - added class `is-invalid` in the input itself
+ - all initial HTMX attributes are present
+ - the error message with class `invalid-feedback`
+ - form ist still valid and can be resubmitted
+
+```html
+<div id="div_id_party_date" class="form-group">
+    <label for="id_party_date" class="requiredField"> 
+        Party date
+        <span class="asteriskField">
+            *
+        </span>
+    </label>
+    <div>
+        <input
+            type="date"
+            name="party_date"
+            value=""
+            hx-get="/party/new/check-date/"
+            hx-trigger="blur"
+            hx-swap="outerHTML"
+            hx-target="#div_id_party_date"
+            class="dateinput form-control is-invalid"
+            required
+            aria-invalid="true"
+            id="id_party_date"
+        />
+        <p id="error_1_id_party_date" class="invalid-feedback">
+            <strong>
+                This field is required.
+            </strong>
+        </p>
+    </div>
+</div>
+```
+
+#### summary
+
+ - cool but not as easy and straightforward as doing it in javascript
+ - keeps one source of authority regarding validation 
+ - 

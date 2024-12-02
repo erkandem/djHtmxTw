@@ -6,16 +6,20 @@
     <meta charset="UTF-8">
     <title>Party!</title>
     <script type="text/javascript" src="{% static '/party/js/htmx.min.js' %}"></script>
-    <script type="text/javascript" src="{% static '/party/js/alpine.min.js' %}" defer></script> <!-- NEW -->
+    <script type="text/javascript" src="{% static '/party/js/alpine.min.js' %}" defer></script>
     <link href="{% static '/party/css/tailwind_output.css' %}" rel="stylesheet">
 </head>
-
-<body class="bg-custom-powder-light" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'> <!-- NEW - hx-headers added -->
+<body class="bg-custom-powder-light" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <nav class="bg-custom-red">
-        <a href="/"
-            class="inline-block p-4 text-custom-powder-light font-dancing-script text-2xl"
-            >
+        <a href="{% url 'page_party_list' %}"
+           class="inline-block p-4 text-custom-powder-light font-dancing-script text-2xl"
+        >
             My parties
+        </a>
+        <a href="{% url 'page_new_party' %}"
+           class="inline-block p-4 text-custom-powder-light"
+        >
+            New party
         </a>
     </nav>
 <main class="container p-5 m-auto">
