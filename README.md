@@ -518,3 +518,7 @@ Below is the result. Note:
  - cool but not as easy and straightforward as doing it in javascript
  - keeps one source of authority regarding validation 
  - 
+
+### C11 - Click-to-edit Pattern - Advanced
+
+ - make list look like table with tailwind each row editable

@@ -1,0 +1,12 @@
+<div class="table-row">
+    <div class="table-cell py-4 px-6 text-gray-900">{{ gift.gift }}</div>
+    <div class="table-cell py-4 px-6">{{ gift.price|default:"/" }}</div>
+    <div class="table-cell py-4 px-6">{{ gift.link|default:"/"|urlizetrunc:30 }}</div>
+    {% if user == party.organizer %}
+        <div class="table-cell py-4 px-6">
+            <button type="submit">
+                Edit
+            </button>
+        </div>
+    {% endif %}
+</div>
