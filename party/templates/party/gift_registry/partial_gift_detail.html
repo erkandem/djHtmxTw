@@ -4,7 +4,11 @@
     <div class="table-cell py-4 px-6">{{ gift.link|default:"/"|urlizetrunc:30 }}</div>
     {% if user == party.organizer %}
         <div class="table-cell py-4 px-6">
-            <button type="submit">
+            <button type="submit"
+                    hx-get="{% url 'partial_gift_update' gift.uuid %}"
+                    hx-target="closest .table-row"
+                    hx-swap="outerHTML"
+            >
                 Edit
             </button>
         </div>

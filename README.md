@@ -522,3 +522,5 @@ Below is the result. Note:
 ### C11 - Click-to-edit Pattern - Advanced
 
  - make list look like table with tailwind each row editable
+ - not `closest .table-row` as target specification what would
+   need to be sth with a unique key in react? "smart JQuery"
