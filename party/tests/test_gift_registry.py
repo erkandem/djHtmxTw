@@ -78,3 +78,19 @@ def test_partial_gift_update_updates_gift_and_returns_its_details_including_part
     assert response.status_code == 200
     assert response.context["gift"].gift == "Updated gift"
     assert response.context["party"] == party
+
+
+def test_partial_gift_delete_removes_gift(
+    authenticated_client,
+    create_user,
+    create_party,
+    create_gift,
+):
+    party = create_party(organizer=create_user)
+    gift = create_gift(party=party)
+    assert Gift.objects.count() == 1
+    url = reverse("partial_gift_delete", args=[gift.uuid])
+
+    authenticated_client(create_user).delete(url)
+
+    assert Gift.objects.count() == 0

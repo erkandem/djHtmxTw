@@ -524,3 +524,39 @@ Below is the result. Note:
  - make list look like table with tailwind each row editable
  - not `closest .table-row` as target specification what would
    need to be sth with a unique key in react? "smart JQuery"
+
+### C12 - Delete Row
+
+#### Summary
+
+ - delete endpoint for a gift of a party
+ - note that form button type needs to be `button`, since there is already
+   a submit type above  - but there is no form?  - changed both to type `button`
+ - note `hx-confirm` to place custom confirmation dialog
+ - adjust `LOGIN_URL` to temporarily redirect to the admin login
+ - can't use generic model delete view here bc of HTMX doctrine. 
+   - generic possible in scenario in which we have a complete re-render 
+   - but that's what we want to avoid using HTMX 
+   - we would still need to display somewhere that the intended change was executed
+   - e.g. with a toast, we don't have a toast lib (see `Remove the Note`)
+ - set timer on removed list to disappear via **extension**
+
+#### HTMX Extensions
+ - core and community maintained extensions exist. 
+ - reference extension on the attribute itself `hx-ext="remove-me"`
+ - extension hooks into flow reassembling "life cycle methods"
+
+```js
+if (name === 'htmx:afterProcessNode') {
+    //...
+}
+```
+ - Since it only expects one parameter - `time` - the attribute holding that value is/can be  called `remove-me` as well
+ - Event in HTMX: https://htmx.org/events/#htmx:afterProcessNode
+ - available extensions https://htmx.org/extensions/
+ - Docs: https://github.com/bigskysoftware/htmx-extensions/blob/main/src/remove-me/README.md
+
+#### Extra
+
+ - `BSD Zero Clause License` not requiring reference to license and author https://opensource.org/license/0bsd
+ - compare to MIT, which has a Zero Clause variant as well https://opensource.org/license/mit-0

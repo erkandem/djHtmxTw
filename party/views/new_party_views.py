@@ -1,5 +1,4 @@
-from crispy_forms.templatetags.crispy_forms_filters import \
-    as_crispy_field  # NEW
+from crispy_forms.templatetags.crispy_forms_filters import as_crispy_field  # NEW
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse  # NEW
 from django.shortcuts import redirect, render

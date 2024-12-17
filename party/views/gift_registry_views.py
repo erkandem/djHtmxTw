@@ -1,7 +1,9 @@
-from django.http import QueryDict
+from django.http import QueryDict, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import DetailView, ListView
+from django.views.decorators.http import require_http_methods
+from django.views.generic import DetailView, ListView, DeleteView
 
 from party.forms import GiftForm
 from party.models import Gift, Party
@@ -63,3 +65,21 @@ class GiftUpdateFormPartial(View):
             "party/gift_registry/partial_gift_update.html",
             {"form": form, "gift": gift},
         )
+
+
+@require_http_methods(["DELETE"])
+def delete_gift_partial(request, gift_uuid):
+    """
+    Avoids generic delete view bc of redirect which - assumption -
+    doesn't fir into the doctrine with HTMX.
+
+    Could still be used by e.g. rendering the list view,
+    now, without the deleted item.
+    A confirmation message could be placed in a toast instead of the HTML itself.
+
+    Ref.:
+        https://docs.djangoproject.com/en/5.1/ref/class-based-views/generic-editing/#deleteview
+    """
+    gift = get_object_or_404(Gift, uuid=gift_uuid)
+    gift.delete()
+    return render(request, "party/gift_registry/partial_gift_removed.html")
